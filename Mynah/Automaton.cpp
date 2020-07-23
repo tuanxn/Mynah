@@ -8,11 +8,12 @@
 
 using namespace std;
 
-int main()
-{
-   Automaton test = Automaton(1, 1);
-   cout << test.get_first_n_generations(10, 9);
-}
+//int main()
+//{
+//   Automaton test = Automaton(1, 1);
+//   cout << test.get_first_n_generations(10, 17);
+//   cout << test.get_first_n_generations(10, 7);
+//}
 
 Automaton::Automaton(size_t num_parents, size_t rule) {
    if (num_parents > MAX_PARENTS) {
@@ -61,6 +62,9 @@ bool Automaton::make_next_gen(const vector<int>& current_gen, vector<int>& next_
    if (!this->_is_valid || (current_gen.size() > 0 && current_gen.size() % 2 == 0)) {
       return false;
    }
+
+   
+
    if (current_gen.size() == 0) {
       next_gen.push_back(1);
       return true;
@@ -95,6 +99,8 @@ bool Automaton::make_next_gen(const vector<int>& current_gen, vector<int>& next_
 }
 
 string Automaton::get_first_n_generations(size_t n, size_t width) {
+   _extreme_bit = 0;
+   
    if (width % 2 == 0) {
       return "";
    }
